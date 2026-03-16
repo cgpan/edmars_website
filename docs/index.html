@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDMARS &mdash; Educational Data Mining Automated Research System</title>
+  <meta name="description" content="EDMARS automates end-to-end educational data mining research, from raw data to reviewer-ready paper." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="hero">
+    <canvas id="mars-canvas" aria-hidden="true"></canvas>
+    <img
+      id="mars-fallback"
+      src="https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg"
+      alt="Mars surface photograph used as decorative background"
+      loading="lazy"
+    />
+
+    <div class="hero-content">
+      <p class="hero-badge">&#x1FA90; EDMARS</p>
+      <h1>Educational Data Mining<br>Automated Research System</h1>
+      <p class="tagline">AI-Powered End-to-End Research Pipeline for Education Data Mining</p>
+      <div class="hero-buttons">
+        <a class="btn-primary btn-accent" href="#capabilities" role="button">Explore Features</a>
+        <a class="btn-primary btn-outline" href="#pipeline" role="button">System Architecture</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHAT IT DOES ==================== -->
+  <section class="section reveal" id="about">
+    <p class="section-label">Overview</p>
+    <h3 class="section-title">What It Does</h3>
+    <p class="section-body">
+      EDMARS is a domain-specific multi-agent LLM pipeline that automates the
+      complete workflow of educational data mining research.
+      Given a dataset and a research prompt, it produces a full, reviewer-ready
+      LaTeX paper with real citations, validated methodology, and interpretable
+      results.  
+      
+    </p>
+  </section>
+
+  <!-- ==================== PIPELINE ==================== -->
+  <section class="section reveal" id="pipeline">
+    <p class="section-label">Architecture</p>
+    <h3 class="section-title">Five-Agent Pipeline</h3>
+
+    <div class="pipeline-wrapper">
+      <div class="pipeline">
+
+        <div class="pipeline-step">
+          <div class="pipeline-node" aria-hidden="true">&#x1F50D;</div>
+          <h4>ProblemFormulator</h4>
+          <p>Searches literature, scopes the research question</p>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="pipeline-node" aria-hidden="true">&#x1F6E0;</div>
+          <h4>DataEngineer</h4>
+          <p>Cleans and engineers features from raw HSLS:09 data</p>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="pipeline-node" aria-hidden="true">&#x1F4CA;</div>
+          <h4>Analyst</h4>
+          <p>Trains ML models, runs SHAP, subgroup &amp; fairness analysis</p>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="pipeline-node" aria-hidden="true">&#x2696;</div>
+          <h4>Critic</h4>
+          <p>Methodological peer review and revision gating</p>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="pipeline-node" aria-hidden="true">&#x270D;</div>
+          <h4>Writer</h4>
+          <p>Generates ACM sigconf LaTeX paper from structured results</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CAPABILITIES ==================== -->
+  <section class="section reveal" id="capabilities">
+    <p class="section-label">Features</p>
+    <h3 class="section-title">Key Capabilities</h3>
+
+    <div class="caps-grid">
+      <div class="cap-card">
+        <p class="cap-stat">5 Specialized Agents</p>
+        <p class="cap-desc">Coordinated by a state-machine orchestrator</p>
+      </div>
+      <div class="cap-card">
+        <p class="cap-stat">End-to-End Automation</p>
+        <p class="cap-desc">From raw data to compiled LaTeX paper</p>
+      </div>
+      <div class="cap-card">
+        <p class="cap-stat">Self-Healing Pipeline</p>
+        <p class="cap-desc">Contract validation &amp; auto-patching at every stage</p>
+      </div>
+      <div class="cap-card">
+        <p class="cap-stat">HSLS:09 Dataset</p>
+        <p class="cap-desc">Hand-curated 95-variable Tier 1 registry</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TECH STACK ==================== -->
+  <section class="section reveal" id="tech">
+    <p class="section-label">Built With</p>
+    <h3 class="section-title">Tech Stack</h3>
+
+    <div class="tech-tags">
+      <span class="tech-tag">Python 3.11</span>
+      <span class="tech-tag">Anthropic API</span>
+      <span class="tech-tag">scikit-learn</span>
+      <span class="tech-tag">XGBoost</span>
+      <span class="tech-tag">SHAP</span>
+      <span class="tech-tag">Docker</span>
+      <span class="tech-tag">ACM LaTeX</span>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <p>EDMARS &middot; Built by Chenguang Pan</p>
+    <div class="footer-links">
+      <a href="#" aria-label="View project on GitHub">GitHub</a>
+      <a href="#" aria-label="Read the research paper">Paper</a>
+    </div>
+  </footer>
+
+  <!-- Three.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Site script -->
+  <script src="script.js"></script>
+</body>
+</html>
