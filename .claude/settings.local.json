@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api:*)",
+      "Bash(open \"/Users/panpeter/Library/CloudStorage/GoogleDrive-grepan3280@gmail.com/My Drive/EDMARS_Website/docs/index.html\")"
+    ]
+  }
+}
