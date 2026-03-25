@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="f1SOW2rlBn2OZ2wEit5apbfDKtJXCdaw0CN22K308r4" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EDM-ARS &mdash; Educational Data Mining Automated Research System</title>
-  <meta name="description" content="EDM-ARS automates end-to-end educational data mining research, from raw data to ACM-formatted reviewer-ready paper." />
+  <title>EDM-ARS &amp; LSAR &mdash; Educational Data Mining Research Tools</title>
+  <meta name="description" content="EDM-ARS automates end-to-end educational data mining research, from raw data to ACM-formatted paper. LSAR provides automated peer review across 8 quality dimensions for learning science conferences." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -21,6 +21,7 @@
       <li><a href="#pipeline">Architecture</a></li>
       <li><a href="#capabilities">Features</a></li>
       <li><a href="#demo">Demo Stats</a></li>
+      <li><a href="#lsar">LSAR</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="#papers">Papers</a></li>
     </ul>
@@ -31,18 +32,19 @@
     <canvas id="mars-canvas" aria-hidden="true"></canvas>
     <div class="hero-vignette"></div>
     <div class="hero-content">
-      <p class="hero-badge">🪐 EDM-ARS &nbsp;·&nbsp; v1.1 · Open Source</p>
+      <p class="hero-badge">🪐 EDM-ARS &nbsp;·&nbsp; v1.2 · Open Source</p>
       <h1>Educational Data Mining<br><span>Automated</span> Research System</h1>
-      <p class="tagline">A multi-agent LLM pipeline that turns a dataset and a research prompt into a complete, reviewer-ready academic paper.</p>
+      <p class="tagline">A multi-agent LLM pipeline that turns a dataset and a research prompt into a complete, reviewer-ready academic paper — with automated quality review via LSAR.</p>
       <div class="hero-buttons">
         <a class="btn btn-primary" href="#pipeline">System Architecture</a>
         <a class="btn btn-outline" href="#capabilities">Key Features</a>
         <a class="btn btn-outline" href="https://github.com/cgpan/edm-ars-public" target="_blank" rel="noopener">Source Code</a>
+        <a class="btn btn-outline" href="#lsar">Meet LSAR</a>
       </div>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-val">5</div>
+        <div class="hero-stat-val">6</div>
         <div class="hero-stat-label">Specialized Agents</div>
       </div>
       <div class="hero-stat">
@@ -72,17 +74,17 @@
       <div class="about-item">
         <div class="about-item-icon">🎓</div>
         <h4>Domain-Specific Design</h4>
-        <p>Built around the HSLS:09 longitudinal dataset with a <strong>three-tier variable registry</strong>: ~95 hand-curated Tier 1 variables with educational annotations, auto-generated Tier 2 variables, and Tier 3 exclusions (weights, IDs) enforced programmatically.</p>
+        <p>Built around the HSLS:09 longitudinal dataset with a <strong>three-tier variable registry</strong>: ~95 hand-curated Tier 1 variables with educational annotations, auto-generated Tier 2 variables, and Tier 3 exclusions (weights, IDs) enforced programmatically. v1.2 adds <strong>multilevel analysis</strong> with automatic school-clustering detection and intraclass correlation for HSLS:09's nested structure.</p>
       </div>
       <div class="about-item">
         <div class="about-item-icon">📄</div>
         <h4>Real Academic Output</h4>
-        <p>The Writer fills prose into a fixed ACM sigconf LaTeX skeleton with <code>%%PLACEHOLDER%%</code> markers — never generating boilerplate from scratch, ensuring structurally correct output every time.</p>
+        <p>A new <strong>OutlineAgent</strong> creates adaptive paper outlines before writing, then the Writer fills prose into an ACM sigconf LaTeX skeleton with <strong>preamble protection</strong> — preventing LLM outputs from corrupting formatting, ensuring structurally correct output every time.</p>
       </div>
       <div class="about-item">
         <div class="about-item-icon">🔁</div>
         <h4>Critic-Gated Revision Loop</h4>
-        <p>After analysis, the Critic reviews all prior agents' outputs and can route targeted revisions back to any stage — up to 2 cycles — before writing begins.</p>
+        <p>After analysis, the Critic reviews all prior agents' outputs and can route targeted revisions back to any stage — up to 2 cycles — before writing begins. v1.2 strengthens <strong>gap-driven research questions</strong> with novelty requirements and theoretical motivation.</p>
       </div>
       <div class="about-item">
         <div class="about-item-icon">💾</div>
@@ -98,7 +100,7 @@
   <section id="pipeline">
     <div class="inner reveal">
       <p class="section-label">Architecture</p>
-      <h3 class="section-title">Five-Agent Pipeline</h3>
+      <h3 class="section-title">Six-Agent Pipeline</h3>
 
       <div class="pipeline-diagram">
 
@@ -134,11 +136,20 @@
 
           <div class="p-step">
             <div class="p-node">
-              ✍️
+              📝
               <span class="p-node-num">5</span>
             </div>
+            <div class="p-name">OutlineAgent</div>
+            <div class="p-desc">Creates adaptive paper outlines with section-level planning, adjusting structure based on actual results</div>
+          </div>
+
+          <div class="p-step">
+            <div class="p-node">
+              ✍️
+              <span class="p-node-num">6</span>
+            </div>
             <div class="p-name">Writer</div>
-            <div class="p-desc">Fills structured results into ACM sigconf LaTeX template — template-based, never free-form generation</div>
+            <div class="p-desc">Fills structured results into ACM sigconf LaTeX template with preamble protection — template-based, never free-form</div>
           </div>
 
         </div><!-- /pipeline-main-flow -->
@@ -157,7 +168,7 @@
           </div>
           <div class="revision-loop">
             <div class="revision-loop-icon">🔄</div>
-            <p><strong>Revision loop</strong> — on REVISE, targeted instructions are routed back to ProblemFormulator, DataEngineer, or Analyst selectively. Up to <strong>2 cycles</strong> before the Writer is unblocked regardless.</p>
+            <p><strong>Revision loop</strong> — on REVISE, targeted instructions are routed back to ProblemFormulator, DataEngineer, Analyst, or OutlineAgent selectively. Up to <strong>2 cycles</strong> before the Writer is unblocked regardless.</p>
           </div>
         </div>
 
@@ -175,8 +186,8 @@
     <div class="caps-grid">
       <div class="cap-card">
         <div class="cap-icon">🤖</div>
-        <p class="cap-stat">5 Specialized Agents</p>
-        <p class="cap-desc">Coordinated by a state-machine orchestrator. Each agent has its own system prompt, temperature, and model tier (Opus for Critic, Sonnet for all others).</p>
+        <p class="cap-stat">6 Specialized Agents</p>
+        <p class="cap-desc">Coordinated by a state-machine orchestrator. Each agent has its own system prompt, temperature, and model tier (Opus for Critic, Sonnet for all others). v1.2 adds the OutlineAgent for adaptive paper planning.</p>
       </div>
       <div class="cap-card">
         <div class="cap-icon">📜</div>
@@ -196,12 +207,27 @@
       <div class="cap-card">
         <div class="cap-icon">⚗️</div>
         <p class="cap-stat">6-Model Battery</p>
-        <p class="cap-desc">Logistic Regression, Random Forest, XGBoost, ElasticNet, MLP, and a Stacking Ensemble are trained, compared, and reported with SHAP explainability where applicable.</p>
+        <p class="cap-desc">Logistic Regression, Random Forest, XGBoost, ElasticNet, MLP, and a Stacking Ensemble are trained, compared, and reported with SHAP explainability. v1.2 adds a <strong>Model Quality Gate</strong> (AUC &ge; 0.60 for classification, R&sup2; &ge; 0.05 for regression) before computing SHAP.</p>
       </div>
       <div class="cap-card">
         <div class="cap-icon">🐳</div>
         <p class="cap-stat">Docker Sandboxing</p>
         <p class="cap-desc">LLM-generated analysis code executes inside a Docker sandbox (network-disabled). Gracefully falls back to subprocess when Docker is unavailable.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">📋</div>
+        <p class="cap-stat">Outline-First Writing <span class="cap-new">New</span></p>
+        <p class="cap-desc">A dedicated OutlineAgent creates adaptive section-level outlines before prose generation, adjusting structure based on model convergence, surprising predictors, and subgroup disparities.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🏫</div>
+        <p class="cap-stat">Multilevel Analysis <span class="cap-new">New</span></p>
+        <p class="cap-desc">Automatic school-clustering detection and intraclass correlation computation for HSLS:09's nested data structure, supporting hierarchical modeling insights.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🔬</div>
+        <p class="cap-stat">Sensitivity Analysis <span class="cap-new">New</span></p>
+        <p class="cap-desc">Drop-and-retrain protocols for high-missingness variables, testing robustness of findings against missing data patterns and flagging potential concerns.</p>
       </div>
     </div>
   </section>
@@ -234,6 +260,91 @@
     </div>
   </section>
 
+  <!-- ==================== LSAR ==================== -->
+  <section id="lsar">
+    <div class="inner reveal">
+      <p class="section-label">Companion Tool</p>
+      <h3 class="section-title">LSAR &mdash; Learning Science Auto-Reviewer</h3>
+      <p class="section-body">Inspired by <a href="https://paperreview.ai/tech-overview" target="_blank" rel="noopener noreferrer">PaperReview.ai</a>, LSAR is an automated, agentic paper reviewer designed for learning science conferences. It evaluates manuscripts across <strong>8 quality dimensions</strong> and supports <strong>4 major venues</strong> — creating a generate-then-review feedback loop with EDM-ARS.</p>
+
+      <div class="lsar-dims-grid">
+        <div class="lsar-dim-card">
+          <div class="lsar-dim-icon">🎯</div>
+          <strong>Relevance</strong>
+          <p>Alignment with venue scope and topic fit</p>
+        </div>
+        <div class="lsar-dim-card">
+          <div class="lsar-dim-icon">💡</div>
+          <strong>Novelty</strong>
+          <p>Originality and contribution beyond prior work</p>
+        </div>
+        <div class="lsar-dim-card">
+          <div class="lsar-dim-icon">📖</div>
+          <strong>Theoretical Grounding</strong>
+          <p>Strength of conceptual framework and motivation</p>
+        </div>
+        <div class="lsar-dim-card">
+          <div class="lsar-dim-icon">🔧</div>
+          <strong>Methodological Rigor</strong>
+          <p>Soundness of research design and analysis</p>
+        </div>
+        <div class="lsar-dim-card">
+          <div class="lsar-dim-icon">📊</div>
+          <strong>Empirical Support</strong>
+          <p>Quality and interpretation of evidence</p>
+        </div>
+        <div class="lsar-dim-card">
+          <div class="lsar-dim-icon">🌟</div>
+          <strong>Significance</strong>
+          <p>Impact on the field and practical implications</p>
+        </div>
+        <div class="lsar-dim-card">
+          <div class="lsar-dim-icon">⚖️</div>
+          <strong>Ethics &amp; Fairness</strong>
+          <p>Ethical considerations and bias awareness</p>
+        </div>
+        <div class="lsar-dim-card">
+          <div class="lsar-dim-icon">✏️</div>
+          <strong>Communication</strong>
+          <p>Clarity, structure, and readability of writing</p>
+        </div>
+      </div>
+
+      <div class="lsar-venues">
+        <span class="lsar-venue-tag">AIED</span>
+        <span class="lsar-venue-tag">EDM</span>
+        <span class="lsar-venue-tag">L@S</span>
+        <span class="lsar-venue-tag">LAK</span>
+      </div>
+
+      <div class="lsar-features">
+        <div class="lsar-feature">
+          <div class="lsar-feature-icon">🔎</div>
+          <p><strong>Venue Detection</strong> — automatically classifies papers for their intended conference or allows manual specification</p>
+        </div>
+        <div class="lsar-feature">
+          <div class="lsar-feature-icon">📦</div>
+          <p><strong>Batch Processing</strong> — review multiple papers in a single run from directories or CSV manifests</p>
+        </div>
+        <div class="lsar-feature">
+          <div class="lsar-feature-icon">📄</div>
+          <p><strong>Multiple Formats</strong> — generates reviews in Markdown, JSON, and PDF reports with modular pipeline stages</p>
+        </div>
+      </div>
+
+      <div class="lsar-loop-callout">
+        <div class="lsar-loop-icon">🔄</div>
+        <p><strong>EDM-ARS</strong> generates a paper &rarr; <strong>LSAR</strong> reviews it across 8 dimensions &rarr; feedback drives targeted revisions — a closed-loop generate-then-review cycle for automated research refinement.</p>
+      </div>
+
+      <div class="lsar-buttons">
+        <a class="btn btn-primary" href="https://github.com/cgpan/LSAR-public" target="_blank" rel="noopener">View LSAR on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
   <!-- ==================== PAPERS ==================== -->
   <section class="section reveal" id="papers">
     <p class="section-label">Publications</p>
@@ -252,18 +363,19 @@
         <a class="paper-link" href="papers/edmars_tech_report_v2.pdf" target="_blank" rel="noopener">PDF &rarr;</a>
       </div>
 
-      <!-- Add additional paper cards here as new demo papers are generated.
-           Template:
-           <div class="paper-card">
-             <div class="paper-meta">
-               <span class="paper-badge paper-badge-demo">Demo Paper</span>
-               <span class="paper-date">Month YYYY</span>
-             </div>
-             <h4 class="paper-title">Paper Title Here</h4>
-             <p class="paper-authors">EDM-ARS (Automated)</p>
-             <a class="paper-link" href="papers/filename.pdf" target="_blank" rel="noopener">PDF &rarr;</a>
-           </div>
-      -->
+      <div class="paper-card">
+        <div class="paper-meta">
+          <span class="paper-badge paper-badge-demo">Demo Paper</span>
+          <span class="paper-badge paper-badge-review">LSAR Reviewed</span>
+          <span class="paper-date">March 2026</span>
+        </div>
+        <h4 class="paper-title">Fairness-Through-Unawareness Does Not Produce Equitable Predictions: Evidence from HSLS:09 on Subgroup Disparities in College Attendance Prediction</h4>
+        <p class="paper-authors">EDM-ARS (Automated) &middot; Target Venue: EDM</p>
+        <div class="paper-links">
+          <a class="paper-link" href="papers/demo_paper_01.pdf" target="_blank" rel="noopener">Paper PDF &rarr;</a>
+          <a class="paper-link paper-link-review" href="papers/demo_paper_01_LSAR_review.pdf" target="_blank" rel="noopener">LSAR Review &rarr;</a>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -319,12 +431,12 @@
   <section id="roadmap">
     <div class="inner reveal">
       <p class="section-label">Scope & Roadmap</p>
-      <h3 class="section-title">Pilot v1.1 &amp; Beyond</h3>
-      <p class="section-body">The current release targets prediction tasks on HSLS:09 only. A six-phase roadmap will expand EDM-ARS into a full research automation platform for educational data science.</p>
+      <h3 class="section-title">v1.2 &amp; Beyond</h3>
+      <p class="section-body">The current release targets prediction tasks on HSLS:09 with six major quality improvements in v1.2. A multi-phase roadmap will expand EDM-ARS into a full research automation platform for educational data science.</p>
 
       <div class="roadmap-grid">
         <div>
-          <div class="roadmap-col-label done">✅ &nbsp;Pilot v1.1 — Completed</div>
+          <div class="roadmap-col-label done">✅ &nbsp;v1.2 — Completed</div>
           <div class="roadmap-item">
             <div class="roadmap-dot done"></div>
             <div class="roadmap-text"><strong>Prediction Pipeline</strong> — end-to-end ML prediction workflow on HSLS:09</div>
@@ -345,10 +457,34 @@
             <div class="roadmap-dot done"></div>
             <div class="roadmap-text"><strong>Checkpoint &amp; Resume</strong> — pipeline state persisted after every stage</div>
           </div>
+          <div class="roadmap-item">
+            <div class="roadmap-dot done"></div>
+            <div class="roadmap-text"><strong>Outline-First Paper Generation</strong> — OutlineAgent creates adaptive outlines before writing</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-dot done"></div>
+            <div class="roadmap-text"><strong>Template Preamble Protection</strong> — prevents LLM outputs from corrupting ACM LaTeX formatting</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-dot done"></div>
+            <div class="roadmap-text"><strong>Model Quality Gate</strong> — AUC &ge; 0.60 / R&sup2; &ge; 0.05 thresholds before SHAP computation</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-dot done"></div>
+            <div class="roadmap-text"><strong>Multilevel Analysis</strong> — school clustering detection and intraclass correlation for nested data</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-dot done"></div>
+            <div class="roadmap-text"><strong>Gap-Driven Research Questions</strong> — strengthened novelty requirements and theoretical motivation</div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-dot done"></div>
+            <div class="roadmap-text"><strong>Sensitivity Analysis</strong> — drop-and-retrain protocols for high-missingness variables</div>
+          </div>
         </div>
 
         <div>
-          <div class="roadmap-col-label next">🔭 &nbsp;Six-Phase Roadmap</div>
+          <div class="roadmap-col-label next">🔭 &nbsp;Future Roadmap</div>
           <div class="roadmap-item">
             <div class="roadmap-dot next"></div>
             <div class="roadmap-text"><strong>Phase 1 — Polymorphism Refactor</strong> — extract <code>TaskTemplate</code> &amp; <code>DatasetAdapter</code> abstract base classes; decouple pipeline from HSLS:09 specifics</div>
@@ -363,15 +499,11 @@
           </div>
           <div class="roadmap-item">
             <div class="roadmap-dot next"></div>
-            <div class="roadmap-text"><strong>Phase 4 — Outline-First Writing &amp; Narrative Archetypes</strong> — split Writer into OutlineAgent + ProseAgent; archetypes include "The Surprising Predictor," "The Fairness Audit," "The Policy Brief"</div>
+            <div class="roadmap-text"><strong>Phase 4 — Multi-Dataset &amp; Transfer Learning</strong> — dataset adapters for ELS:2002, PISA 2022, ASSISTments; cross-population and cross-wave transfer experiments</div>
           </div>
           <div class="roadmap-item">
             <div class="roadmap-dot next"></div>
-            <div class="roadmap-text"><strong>Phase 5 — Multi-Dataset &amp; Transfer Learning</strong> — dataset adapters for ELS:2002, PISA 2022, ASSISTments; cross-population and cross-wave transfer experiments</div>
-          </div>
-          <div class="roadmap-item">
-            <div class="roadmap-dot next"></div>
-            <div class="roadmap-text"><strong>Phase 6 — Controlled Human Evaluation</strong> — blinded comparison of EDM-ARS papers vs. matched human-authored papers on quality, correctness, and efficiency metrics</div>
+            <div class="roadmap-text"><strong>Phase 5 — Controlled Human Evaluation</strong> — blinded comparison of EDM-ARS papers vs. matched human-authored papers on quality, correctness, and efficiency metrics</div>
           </div>
         </div>
       </div>
@@ -381,11 +513,12 @@
   <!-- ==================== FOOTER ==================== -->
   <footer>
     <div class="footer-left">
-      <p><span>EDM-ARS</span> &nbsp;·&nbsp; Educational Data Mining Automated Research System</p>
+      <p><span>EDM-ARS</span> &nbsp;·&nbsp; <span>LSAR</span> &nbsp;·&nbsp; Educational Data Mining Research Tools</p>
       <p style="font-size:12px; margin-top:4px;">Built by Chenguang Pan and his friends</p>
     </div>
     <div class="footer-links">
-      <a href="https://github.com/cgpan/edm-ars-public" aria-label="View project on GitHub">GitHub</a>
+      <a href="https://github.com/cgpan/edm-ars-public" aria-label="View EDM-ARS on GitHub">EDM-ARS GitHub</a>
+      <a href="https://github.com/cgpan/LSAR-public" aria-label="View LSAR on GitHub">LSAR GitHub</a>
       <a href="papers/edmars_tech_report_v2.pdf" aria-label="Read the technical report">Paper</a>
     </div>
   </footer>
