@@ -683,7 +683,7 @@ footer {
   transition: color 0.2s;
 }
 .footer-links a:hover { color: var(--amber); }
-.footer-map { display: flex; align-items: center; }
+.visitor-map { display: flex; justify-content: center; padding: 24px 0 32px; }
 
 /* ── PAPERS SECTION ── */
 .papers-grid {
